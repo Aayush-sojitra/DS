@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        a=parseInt(prompt("Enter Number"));
+        var arr1=['one','two','three','four','five','six','seven','eight','nine','ten'];
+        var arr2=['eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','ninteen'];
+        var arr3=['twenty','thirty','fourty','fifty','sixty','seventy','eighty','ninty',];
+        if (a<0 || a>999) {
+            document.write("Out of Range");
+        } else if(isNaN(a)){
+            document.write("Not a Number");            
+        }
+        else{
+            var result = " ";
+            if(a==0){
+                result='Zero';
+            }
+            else if(a>0 && a<=10){
+            result=arr1[a-1];
+            }
+            else if(a>10 && a<20){
+                result=arr2[a-11];
+            }
+            else if(a>20 && a<100){
+                tens=Math.floor(a/10);
+                num=a%10;
+                result=arr3[tens-2];
+                if(num>0){
+                result+="-"+arr1[num-1];
+                }
+            }
+            else if(a>=100 && a<1000){
+                hundreds=Math.floor(a/100);
+                result=arr1[hundreds-1]+" hundred";
+                num1=a%100;
+                if(num1==0){
+                    result+="";
+                }
+                else if(num1>0 && num1<=10){
+                result+= " "+ arr1[num1-1];
+                }
+                else if(num1>10 && num1<20){
+                    result+= " "+arr2[num1-11];
+                }
+                else{
+                    temp=Math.floor(num1/10);
+                    num2=num1%10;
+                    result+= " " +arr3[temp-2];
+                if(num2>0){
+                result+="-"+arr1[num2-1];
+                }
+            }
+            }
+            document.write(result);
+
+        }
+    </script>
+</body>
+</html>
