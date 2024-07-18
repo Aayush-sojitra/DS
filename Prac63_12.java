@@ -21,6 +21,20 @@ class LinkedListDemo{
 		}
 	}
 
+    public void insertAtLast(int data){
+		Node newNode = new Node(data);
+		if(first == null){
+			first = newNode;
+		}
+		else{
+			Node temp = first;
+			while(temp.link!=null){
+				temp = temp.link;
+			}
+			temp.link = newNode;
+		}
+	}
+
     public void display(){
 		Node temp=first;
 			while(temp != null){
@@ -30,28 +44,22 @@ class LinkedListDemo{
 			System.out.println();
 	}
 
-    public void  copyLL(){
+    public void  copyLL(LinkedListDemo l2){
         if (first==null) {
             System.out.println("LinkedList is Null");
             return;
         }
-        Node newNode=new Node(first.info);
-
-        Node begin=newNode;
+ 
+        l2.insertAtLast(first.info);
         Node save=first;
-        Node n1=new Node(save.info);
 
         while (save.link!=null) {
-            Node pred=newNode;
             save=save.link;
-
-            
-            pred.link=n1;
+            // l2.insertAtFirst(data);
+            l2.insertAtLast(save.info);
         }
-
-        if (n1.link==null) {
-            return ;
-        }
+        System.out.println("Copied LinkedList :");
+        l2.display();
     }
 }
 public class Prac63 {
@@ -59,15 +67,14 @@ public class Prac63 {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         LinkedListDemo l1=new LinkedListDemo();
+        LinkedListDemo l2=new LinkedListDemo();
 
         l1.insertAtFirst(30);
         l1.insertAtFirst(20);
         l1.insertAtFirst(10);
         l1.insertAtFirst(5);
         l1.display();
-
-        LinkedListDemo l2=new LinkedListDemo();
-        l2.copyLL();
+        l1.copyLL(l2);
         
          
     }
