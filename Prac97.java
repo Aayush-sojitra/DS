@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class Prac97 {
-
+class Quick{
     public static void QuickSort(int[] arr,int lb,int ub){
         boolean flag=true;
 
@@ -36,13 +35,22 @@ public class Prac97 {
             QuickSort(arr, j+1, ub);
         }
 
+    }
+
+    public static void display(int[] arr){
+        System.out.println("-----Sorted Array-----");
         for(int i=0;i<arr.length;i++){
             System.out.print(arr[i]+" ");
         }
     }
+}
+
+public class Prac97 {
     
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
+        Quick q=new Quick();
+
         System.out.println("Enter Size :");
         int n=sc.nextInt();
         int []a=new int[n];
@@ -54,6 +62,7 @@ public class Prac97 {
         int lb=0;
         int ub=a.length-1;
 
-        QuickSort(a, lb, ub);
+        q.QuickSort(a, lb, ub);
+        q.display(a);
     }
 }
